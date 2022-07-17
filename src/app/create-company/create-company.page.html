@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Add Company
+    </ion-title>
+    <!-- <ion-icon routerLink="/add-company"  slot="end" name="add-outline" style="font-size:30px;margin-right:10px;"></ion-icon> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col size-sm="11" size-xs="11" offset="0.5" size-md="6">
+      <div class="main-div">
+        <ion-label class="title-font">Name<span style="color: red;">*</span></ion-label>
+        <ion-input class="inputFields" type="text" [(ngModel)]="name" placeholder="Company Name"></ion-input>
+      </div>
+    </ion-col>
+
+    <ion-col size-sm="11" size-xs="11" offset="0.5" size-md="6">
+      <div class="main-div">
+        <ion-label class="title-font">Email<span style="color: red;">*</span></ion-label>
+        <ion-input class="inputFields" type="text" [(ngModel)]="email" placeholder="Company Email"></ion-input>
+      </div>
+    </ion-col>
+
+    <ion-col size-sm="11" size-xs="11" offset="0.5" size-md="6">
+      <div class="main-div">
+        <ion-label class="title-font">City<span style="color: red;">*</span></ion-label>
+        <ion-input class="inputFields" type="text" [(ngModel)]="city" placeholder="Company City"></ion-input>
+      </div>
+    </ion-col>
+
+    <ion-col size-sm="11" size-xs="11" offset="0.5" size-md="6">
+      <div class="main-div">
+        <ion-label class="title-font">Address<span style="color: red;">*</span></ion-label>
+        <ion-input class="inputFields" type="text" [(ngModel)]="address" placeholder="Company Address"></ion-input>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+    <ion-button *ngIf="!isEdit"  (click)="addCompany()" class="btn-submit" expand="block" fill="clear" >
+      Submit
+    </ion-button>
+    <ion-button *ngIf="isEdit"  (click)="updateCompany()" class="btn-submit" expand="block" fill="clear" >
+      Submit
+    </ion-button>
+</ion-footer>

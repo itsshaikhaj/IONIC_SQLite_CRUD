@@ -1,20 +1,50 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Ionic SQLite CRUD
     </ion-title>
+    <ion-icon routerLink="/create-company"  slot="end" name="add-outline" style="font-size:30px;margin-right:10px;"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Ionic SQLite CRUD</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-row >
+    <ion-col size="11" size-md="6" class="col" offset="0.5" style="margin-top:25px;">
+      <div class="outer-shadow golbal-outer-div" *ngFor="let item of sqLiteService.COMPANIES"  >
+        <div class="box-shadow">
+          <ion-row style="width: 100%;">
+            <ion-col size="10" style="display: flex;align-items: center;">
+              <ion-row style="width: 100%;">
+                <ion-col size="12">
+                  <ion-label class="title-label">{{ item?.name}}</ion-label>
+                  <hr style="border-top:1px solid #ccc;">
+                </ion-col>
+
+                <ion-col style=" margin-top: -16px;" size="12">
+                </ion-col>
+                <ion-col style="margin-top: -10px;" size="12">
+                  <ion-label style="font-size: 16px;font-weight:500;color: slategrey;letter-spacing: 0.5px;">
+                    {{ item?.address}}</ion-label>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col size="2" [routerLink]="['/company-details/', item._id]"
+              style="background: #0d5191;border-top-right-radius: 15px;border-bottom-right-radius: 15px;">
+              <div>
+                <div class="corner">
+                  <img class="iconEdge" src="assets/icon/navigate_next.svg" alt="">
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
 </ion-content>

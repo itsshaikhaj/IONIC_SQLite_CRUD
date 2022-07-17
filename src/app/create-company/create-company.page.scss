@@ -1,0 +1,27 @@
+ion-toolbar {
+    --background: #0d5191;
+      --color: white;
+  }
+  
+  ion-content, ion-footer {
+    --background: #efefef;
+    background: #efefef;
+  }
+  
+  ion-input {
+    margin-top: 5px;
+  }
+
+  .main-div {
+    margin: 5px;
+  }
+
+ .btn-submit {
+    --background: #0d5191;
+    --color: white;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 2px;
+    font-weight: 600;
+    border-radius: 15px;
+}

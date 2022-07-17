@@ -24,3 +24,31 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+.my-custom-toastSuceess{
+    --background: green;
+    color: white;
+    --ion-font-family: Nunito;
+    --font-max-size: 16px !important;
+  }
+  
+  .my-custom-toastError{
+    --background: red;
+    color: white;
+    --ion-font-family: Nunito;
+    --font-max-size: 16px !important;
+  }
+  
+  ion-popover.my-psp-pop .popover-wrapper .popover-content {
+    border-radius: 15px !important;
+    background: #EFEFEF !important;
+    // box-shadow: none;
+    padding: 10px !important;
+    --backdrop-opacity : 0.5 !important;
+    --backdrop-opacity: var(--ion-backdrop-opacity, 0.50);
+    ion-backdrop {
+    --backdrop-opacity: 0.5 !important;
+    }
+
+}

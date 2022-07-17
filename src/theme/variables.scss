@@ -234,3 +234,31 @@
     --ion-card-background: #1e1e1e;
   }
 }
+
+
+
+.inputFields{
+  height: 45px;
+  border: none;
+  // background: var(--ion-color-light);
+  // box-shadow: inset 4px 4px 10px #D9D9D9, inset -0.1px -0.1px 1px #ffffff;
+  background: #efefef;
+    box-shadow: inset 3px 3px 3px #c6c6c6, inset -3px -3px 3px #fff;
+  --padding-start:25px;
+  }
+
+  .title-font{
+    color: gray;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  ion-toolbar {
+    --background: #0d5191;
+      --color: white;
+  }
+  
+  ion-content, ion-footer {
+    --background: #efefef;
+    background: #efefef;
+  }

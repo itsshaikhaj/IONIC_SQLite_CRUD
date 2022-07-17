@@ -1,0 +1,71 @@
+
+.main-card {
+    background: #EFEFEF;
+    padding: 15px;
+    border-radius: 15px;
+    background: #efefef;
+    box-shadow: 5px 5px 10px #c6c6c6, -5px -5px 10px #ffffff;
+}
+
+.sub-card {
+    background: #EFEFEF;
+    padding: 5px;
+    border-radius: 15px;
+    background: #efefef;
+    box-shadow: 5px 5px 10px #c6c6c6, -5px -5px 10px #ffffff;
+}
+
+h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.col-bottom {
+    padding: 12px;
+    border-bottom: 1px solid lightslategrey;
+}
+
+.key {
+    font-weight: 600;
+}
+
+.value {
+    font-weight: 600;
+    color: black;
+}
+
+ion-card-header {
+    padding: 0;
+    font-weight: 600;
+    color: lightslategrey;
+}
+
+ion-item {
+    --background: #EFEFEF;
+}
+
+.name {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.num {
+    color: slategrey;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.edit {
+    text-align: end;
+    display: flex;
+    position: absolute;
+    z-index: 99;
+    right: 5;
+    padding: 8px;
+    left: 92%;
+    top: 0%;
+    border-radius: 50%;
+    background: #efefef;
+    box-shadow: 5px 5px 10px #c6c6c6, -5px -5px 10px #ffffff;
+}

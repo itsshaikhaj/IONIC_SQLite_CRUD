@@ -11,6 +11,18 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'create-company',
+    loadChildren: () => import('./create-company/create-company.module').then( m => m.CreateCompanyPageModule)
+  },
+  {
+    path: 'company-details/:id',
+    loadChildren: () => import('./company-details/company-details.module').then( m => m.CompanyDetailsPageModule)
+  },
+  {
+    path: 'modal',
+    loadChildren: () => import('./modal/modal.module').then( m => m.ModalPageModule)
+  },
 ];
 
 @NgModule({
