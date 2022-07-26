@@ -16,6 +16,10 @@ const routes: Routes = [
     loadChildren: () => import('./create-company/create-company.module').then( m => m.CreateCompanyPageModule)
   },
   {
+    path: 'splash',
+    loadChildren: () => import('./splash/splash.module').then( m => m.SplashPageModule)
+  },
+  {
     path: 'company-details/:id',
     loadChildren: () => import('./company-details/company-details.module').then( m => m.CompanyDetailsPageModule)
   },

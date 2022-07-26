@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
-import { Platform } from '@ionic/angular';
+import { LoadingController, Platform } from '@ionic/angular';
 import { HelperService } from './helper.service';
 
 @Injectable({
@@ -13,11 +13,14 @@ export class SqliteService {
   readonly db_name: string = "test.db";
   readonly db_table: string = "userTable";
   COMPANIES: Array<any>;
+  loader: any;
+  isLoading: boolean = false;
 
   constructor(
     private platform: Platform,
     private sqlite: SQLite,
-    private helperService: HelperService
+    private helperService: HelperService,
+    public loadingController: LoadingController,
   ) {
     // this.databaseConn();
   }
@@ -38,35 +41,41 @@ export class SqliteService {
                     name varchar(255),
                     email varchar(255),
                     city varchar(255),
-                    address varchar(255)
+                    address varchar(255),
+                    profile_pic text
                   )`, [])
           .then((res) => {
           })
-          .catch((error) => alert(JSON.stringify(error)));
+          .catch((error) =>
+            alert(JSON.stringify(error + 'CREATE TABLE')));
       })
-        .catch((error) => alert(JSON.stringify(error)));
+        .catch((error) => alert(JSON.stringify(error + 'CREATE TABLE')));
     });
   }
 
   // Crud
-  public create(name, email, city, address) {
+  public create(name, email, city, address, profile_pic) {
     return this.dbInstance.executeSql(`
-      INSERT INTO ${this.db_table} (name, email, city, address) VALUES ('${name}', '${email}', '${city}', '${address}')`, [])
+      INSERT INTO ${this.db_table} (name, email, city, address, profile_pic) VALUES ('${name}', '${email}', '${city}', '${address}', '${profile_pic}')`, [])
   }
 
+  // Get All records
   getAllRecords() {
+    this.presentLoading()
     return this.dbInstance.executeSql(`SELECT * FROM ${this.db_table}`, []).then((res) => {
       this.COMPANIES = [];
+      this.dismissLoading();
       if (res.rows.length > 0) {
-      console.log('res :', res);
         for (var i = 0; i < res.rows.length; i++) {
           this.COMPANIES.push(res.rows.item(i));
         }
-        console.log('this.COMPANIES :', this.COMPANIES);
+        this.dismissLoading();
         return this.COMPANIES;
+
       }
     }, (e) => {
-      alert(JSON.stringify(e));
+      this.dismissLoading();
+      alert(JSON.stringify(e + 'GET ALL'));
     });
   }
 
@@ -74,13 +83,13 @@ export class SqliteService {
   getUser(id): Promise<any> {
     return this.dbInstance.executeSql(`SELECT * FROM ${this.db_table} WHERE _id = ?`, [id])
       .then((res) => {
-      console.log('res :', res);
         return {
           _id: res.rows.item(0)._id,
           name: res.rows.item(0).name,
           email: res.rows.item(0).email,
           city: res.rows.item(0).city,
           address: res.rows.item(0).address,
+          profile_pic: res.rows.item(0).profile_pic,
         }
       });
   }
@@ -96,6 +105,26 @@ export class SqliteService {
     return this.dbInstance.executeSql(`
       DELETE FROM ${this.db_table} WHERE _id = ${user}`, [])
 
+  }
+
+  async presentLoading() {
+    this.isLoading = true;
+    return await this.loadingController.create({
+      // duration: 5000,
+      translucent: true,
+      message: 'Loading...',
+      backdropDismiss: true,
+      spinner: 'lines'
+    }).then(a => {
+      a.present().then(() => {
+        if (!this.isLoading) {
+        }
+      });
+    });
+  }
+
+  async dismissLoading() {
+    this.isLoading = false;
   }
 
 }

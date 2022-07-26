@@ -18,7 +18,7 @@ export class CompanyDetailsPage implements OnInit {
   address: any;
   id: any;
   constructor(
-    public popoverCtrl : PopoverController,
+    public popoverCtrl: PopoverController,
     private sqLiteService: SqliteService,
     private helperService: HelperService,
     private router: Router,
@@ -31,14 +31,14 @@ export class CompanyDetailsPage implements OnInit {
     this.getCompanyDetails();
   }
 
-  async addOrEditContact(type:any, item:any) {
+  async addOrEditContact(type: any, item: any) {
     let data = item ? item : {};
     data.type = type
     const popover = await this.popoverCtrl.create({
       component: ModalPage,
       componentProps: {
-        "paramID":1,
-        "data" : item,
+        "paramID": 1,
+        "data": item,
       },
       animated: true,
       showBackdrop: false,
@@ -47,7 +47,7 @@ export class CompanyDetailsPage implements OnInit {
       cssClass: 'my-psp-pop',
     });
     popover.onDidDismiss().then((dataReturned) => {
-      if(dataReturned.data == undefined){
+      if (dataReturned.data == undefined) {
         return;
       }
       if (dataReturned !== null) {
@@ -57,7 +57,7 @@ export class CompanyDetailsPage implements OnInit {
         }
       }
     });
-      return await popover.present();
+    return await popover.present();
   }
 
   remove(id) {
@@ -65,17 +65,17 @@ export class CompanyDetailsPage implements OnInit {
       this.helperService.presentToastSuccess('Record deleted successfully!')
       this.router.navigate(['/home'])
     })
-    .catch(e => {
-      alert(JSON.stringify(e))
-    });
+      .catch(e => {
+        alert(JSON.stringify(e))
+      });
   }
 
   getCompanyDetails() {
     this.sqLiteService.getUser(this.id).then((res) => {
       this.name = res['name'];
-      this.email = res['email']; 
-      this.city = res['city']; 
-      this.address = res['address']; 
+      this.email = res['email'];
+      this.city = res['city'];
+      this.address = res['address'];
     })
   }
 }

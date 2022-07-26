@@ -1,9 +1,7 @@
-
-
 <ng-container *ngIf="modelId == 1">
 
-  <div  style="margin-bottom: 5px;border-radius:15px !important; ">
-    <div >
+  <div style="margin-bottom: 5px;border-radius:15px !important; ">
+    <div>
       <div class="row" style="text-align: end;">
         <div class="col-sm-12 col-md-12" style="padding:0 !important">
           <ion-icon (click)="close('closed')" style="font-size: 30px;color: #0d5191;" name="close-sharp"></ion-icon>
@@ -17,23 +15,23 @@
           </ion-col>
 
           <ion-col size-sm="12" size-md="12" size-xs="12">
-            <ion-input class="inputFields" [(ngModel)]="name" placeholder="Enter your name" required  type="text"
+            <ion-input class="inputFields" [(ngModel)]="name" placeholder="Enter your name" required type="text"
               style="--background: white;"></ion-input>
           </ion-col>
 
           <ion-col size-sm="12" size-md="12" size-xs="12">
-            <ion-input class="inputFields" [(ngModel)]="mobileNumber" placeholder="Enter your number" required  type="tel"
-              style="--background: white;"></ion-input>
+            <ion-input class="inputFields" [(ngModel)]="mobileNumber" placeholder="Enter your number" required
+              type="tel" style="--background: white;"></ion-input>
           </ion-col>
 
           <ion-col size-sm="12" size-md="12" size-xs="12">
-            <ion-button *ngIf="data.type == 'edit'"  [disabled]="spin"
+            <ion-button *ngIf="data.type == 'edit'" [disabled]="spin"
               style="--background: #0d5191;--color:white;--border-radius:10px" expand="block" fill="clear"
               shape="round">
               <ion-spinner *ngIf="spin" name="lines"></ion-spinner>
               <ion-label *ngIf="!spin">Update</ion-label>
             </ion-button>
-            <ion-button *ngIf="data.type != 'edit'"  [disabled]="spin"
+            <ion-button *ngIf="data.type != 'edit'" [disabled]="spin"
               style="--background: #0d5191;--color:white;--border-radius:10px" expand="block" fill="clear"
               shape="round">
               <ion-spinner *ngIf="spin" name="lines"></ion-spinner>

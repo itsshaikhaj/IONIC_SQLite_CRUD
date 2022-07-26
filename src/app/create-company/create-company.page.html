@@ -37,13 +37,27 @@
       </div>
     </ion-col>
   </ion-row>
+
+  <ion-row *ngIf="!isEdit">
+    <ion-col size-sm="11" size-xs="11" offset="0.5" size-md="6">
+      <ion-button style="--background:  #0d5191;" (click)="presentActionSheet()">
+        Take Snap
+      </ion-button>
+    </ion-col>
+
+    <ion-col size-sm="11" size-xs="11" offset="0.5" size-md="6">
+      <div style="height: 100;width:100%">
+        <img *ngIf="capturedSnapURL" [src]="capturedSnapURL" style="height:100%;width:100%" />
+      </div>
+    </ion-col>
+  </ion-row>
 </ion-content>
 
 <ion-footer class="ion-no-border">
-    <ion-button *ngIf="!isEdit"  (click)="addCompany()" class="btn-submit" expand="block" fill="clear" >
-      Submit
-    </ion-button>
-    <ion-button *ngIf="isEdit"  (click)="updateCompany()" class="btn-submit" expand="block" fill="clear" >
-      Submit
-    </ion-button>
+  <ion-button *ngIf="!isEdit" (click)="addCompany()" class="btn-submit" expand="block" fill="clear">
+    Submit
+  </ion-button>
+  <ion-button *ngIf="isEdit" (click)="updateCompany()" class="btn-submit" expand="block" fill="clear">
+    Submit
+  </ion-button>
 </ion-footer>

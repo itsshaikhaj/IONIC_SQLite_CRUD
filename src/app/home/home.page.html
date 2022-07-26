@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Ionic SQLite CRUD
+      Company Management
     </ion-title>
     <ion-icon routerLink="/create-company"  slot="end" name="add-outline" style="font-size:30px;margin-right:10px;"></ion-icon>
   </ion-toolbar>
@@ -10,7 +10,7 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Ionic SQLite CRUD</ion-title>
+      <ion-title size="large">Company Management</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -19,7 +19,13 @@
       <div class="outer-shadow golbal-outer-div" *ngFor="let item of sqLiteService.COMPANIES"  >
         <div class="box-shadow">
           <ion-row style="width: 100%;">
-            <ion-col size="10" style="display: flex;align-items: center;">
+            <ion-col size="2.5" style="display: flex;align-items:center;">
+              <ion-avatar>
+                <img *ngIf="item?.profile_pic"  [src]="item?.profile_pic">
+                <img *ngIf="!item?.profile_pic || item?.profile_pic == 'undefined'" src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+              </ion-avatar>
+            </ion-col>
+            <ion-col size="7.5" style="display: flex;align-items: center;">
               <ion-row style="width: 100%;">
                 <ion-col size="12">
                   <ion-label class="title-label">{{ item?.name}}</ion-label>
